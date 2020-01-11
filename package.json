@@ -9,10 +9,12 @@
     "build-renderer": "cross-env NODE_ENV=production webpack --config ./configs/webpack.config.renderer.prod.babel.js --colors",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",
     "dev": "cross-env START_HOT=1 node -r @babel/register ./internals/scripts/CheckPortInUse.js && cross-env START_HOT=1 yarn start-renderer-dev",
+    "lint": "eslint --fix-dry-run ./",
     "package": "yarn build && electron-builder build --publish never",
     "start": "cross-env NODE_ENV=production electron ./app/main.prod.js",
     "start-main-dev": "cross-env START_HOT=1 NODE_ENV=development electron -r @babel/register ./app/main.dev.js",
-    "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js"
+    "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
+    "test": "yarn build-renderer && jest"
   },
   "build": {
     "productName": "ElectronReact",
@@ -26,8 +28,7 @@
       "package.json"
     ],
     "dmg": {
-      "contents": [
-        {
+      "contents": [{
           "x": 130,
           "y": 220
         },
@@ -160,13 +161,19 @@
   },
   "dependencies": {
     "@hot-loader/react-dom": "^16.11.0",
+    "await-to-js": "^2.1.1",
     "core-js": "^3.5.0",
     "devtron": "^1.4.0",
     "electron-debug": "^3.0.1",
     "electron-log": "^4.0.0",
+    "electron-store": "^5.1.0",
     "electron-updater": "^4.2.0",
+    "formik": "^2.1.1",
     "history": "^4.10.1",
+    "influx": "^5.5.1",
+    "menubar": "^7.1.0",
     "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
     "react-hot-loader": "^4.12.18",
     "source-map-support": "^0.5.16"
