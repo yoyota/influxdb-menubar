@@ -13,12 +13,12 @@ function getButtonProps(queryResult) {
   if (queryResult instanceof Error) {
     return {
       variant: "danger",
-      text: "fail"
+      text: "Fail"
     }
   }
   return {
     variant: "success",
-    text: "saved"
+    text: "Saved"
   }
 }
 
@@ -26,9 +26,10 @@ export default function({ queryResult }) {
   const [buttonProps, setButtonProps] = useState(defaultButtonProps)
   useLayoutEffect(() => {
     setButtonProps(getButtonProps(queryResult))
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       setButtonProps(defaultButtonProps)
     }, 3000)
+    return () => clearTimeout(timeout)
   }, [queryResult])
   const { variant, text } = buttonProps
   return (
