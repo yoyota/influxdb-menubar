@@ -28,7 +28,8 @@
       "package.json"
     ],
     "dmg": {
-      "contents": [{
+      "contents": [
+        {
           "x": 130,
           "y": 220
         },
@@ -187,6 +188,8 @@
   },
   "browserslist": "electron 1.6",
   "jest": {
-    "setupFilesAfterEnv": ["./test/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "./test/setupTests.js"
+    ]
   }
 }
