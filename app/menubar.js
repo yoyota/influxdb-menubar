@@ -28,6 +28,12 @@ async function createQueryInterval(url, query) {
 
 ipcMain.on("create-query-interval", async (_, url, query) => {
   createQueryInterval(url, query)
+
+  if (NODE_ENV === "test") {
+    setTimeout(() => {
+      console.log(`test tray title, tray title: ${tray.getTitle()}`)
+    }, 2500)
+  }
 })
 
 ipcMain.handle("query-test", async (_, url, query) => {
@@ -56,7 +62,7 @@ function createMenubar() {
       mb.showWindow()
     }
     const store = new Store()
-    const { url, query } = store.get("influxdb")
+    const { url, query } = store.get("influxdb") || {}
     if (!url || !query) {
       return
     }

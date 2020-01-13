@@ -1,7 +1,7 @@
 {
-  "name": "electron-react-boilerplate-minimal",
+  "name": "influxdb-menubar",
   "productName": "ElectronReact",
-  "version": "0.18.1",
+  "version": "0.1.0",
   "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -17,8 +17,8 @@
     "test": "yarn build-renderer && jest"
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.develar.ElectronReact",
+    "productName": "influxdb-menubar",
+    "appId": "yoyota.influxdb-menubar",
     "files": [
       "dist/",
       "node_modules/",
@@ -60,14 +60,14 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate",
+      "owner": "yoyota",
+      "repo": "influxdb-menubar",
       "private": false
     }
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yoyota/electron-react-boilerplate-minimal.git"
+    "url": "git+https://github.com/yoyota/influxdb-menubar.git"
   },
   "author": {
     "name": "yoyota",
@@ -75,7 +75,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yoyota/electron-react-boilerplate-minimal/issues"
+    "url": "https://github.com/yoyota/influxdb-menubar/issues"
   },
   "keywords": [
     "electron",
@@ -85,7 +85,7 @@
     "hot",
     "reload"
   ],
-  "homepage": "https://github.com/yoyota/electron-react-boilerplate-minimal#readme",
+  "homepage": "https://github.com/yoyota/influxdb-menubar#readme",
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
@@ -110,6 +110,8 @@
     "@babel/preset-flow": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "@babel/register": "^7.7.4",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
@@ -183,5 +185,8 @@
     "npm": ">=4.x",
     "yarn": ">=0.21.3"
   },
-  "browserslist": "electron 1.6"
+  "browserslist": "electron 1.6",
+  "jest": {
+    "setupFilesAfterEnv": ["./test/setupTests.js"]
+  }
 }
