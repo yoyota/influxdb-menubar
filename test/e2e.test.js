@@ -6,7 +6,7 @@ const Influx = require("influx")
 
 describe("Application launch", () => {
   let app
-  const url = "http://localhost:8086/test"
+  const url = process.env.INFLUXDB_URL || "http://localhost:8086/test"
 
   beforeAll(async () => {
     const influx = new Influx.InfluxDB(url)
@@ -53,7 +53,7 @@ describe("Application launch", () => {
       expect(await app.client.$("p").getText()).toContain(`menubar":0.64`)
     })
 
-    test("test", async () => {
+    test("menubar tray test", async () => {
       await app.client.pause(5000)
       const logs = await app.client.getMainProcessLogs()
       const expected = ["test tray title, tray title: 0.64"]
