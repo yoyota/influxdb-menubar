@@ -1,1 +1,1 @@
-Electron React Boilerplate minimal custom
+Influxdb menubar
