@@ -1,0 +1,6 @@
+{
+  "name": "influxdb-menu-bar-test",
+  "productName": "influxdb-menu-bar-test",
+  "version": "0.1.0",
+  "main": "../app/main.dev.js"
+}

@@ -29,7 +29,7 @@ export default function() {
       <h2 className="mb-4">InfluxDB</h2>
       <Formik
         onSubmit={onSubmit}
-        initialValues={store.get("influxdb", { url: "https://", query: "" })}
+        initialValues={store.get("influxdb", { url: "http://", query: "" })}
       >
         {({ handleSubmit, handleChange, values }) => (
           <Form onSubmit={handleSubmit}>
