@@ -19,6 +19,14 @@ export default function() {
       setQueryResult(err)
       return
     }
+    if (result.lenght !== 0 && !result[0].menubar) {
+      setQueryResult(
+        new Error(`Query was success but alias name is not menubar.
+        ex) SELECT "column" as menubar FROM "cpu_load_short"
+        query result: ${JSON.stringify(result)}`)
+      )
+      return
+    }
     setQueryResult(result)
     store.set("influxdb", values)
     ipcRenderer.send("create-query-interval", url, query)
