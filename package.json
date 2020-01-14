@@ -15,7 +15,8 @@
     "start-main-dev": "cross-env START_HOT=1 NODE_ENV=development electron -r @babel/register ./app/main.dev.js",
     "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
     "test": "yarn build && cross-env NODE_ENV=production jest",
-    "test-dev": "concurrently  \"yarn start-renderer-dev\" \"jest --watch\""
+    "test-dev": "yarn build-renderer && jest",
+    "test-dev-watch": "concurrently \"yarn start-renderer-dev\" \"START_HOT=1 jest --watch $ARG \""
   },
   "build": {
     "productName": "influxdb-menubar",
