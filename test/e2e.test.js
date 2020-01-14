@@ -20,9 +20,14 @@ describe("Application launch", () => {
   })
 
   beforeEach(async () => {
+    const args =
+      process.env.NODE_ENV === "production"
+        ? [path.join(__dirname, "..", "app")]
+        : [path.join(__dirname)]
+
     app = new Application({
+      args,
       path: electronPath,
-      args: [path.join(__dirname)],
       env: { NODE_ENV: "test" }
     })
     await app.start()
