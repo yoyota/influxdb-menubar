@@ -3,7 +3,7 @@
 const log = require("electron-log")
 const { app, BrowserWindow } = require("electron")
 const { autoUpdater } = require("electron-updater")
-const { createMenubar } = require("./menubar")
+const { createMenubar } = require("./menubarMain")
 
 class AppUpdater {
   constructor() {
