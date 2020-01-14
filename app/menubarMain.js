@@ -1,7 +1,8 @@
+const path = require("path")
 const Influx = require("influx")
 const Store = require("electron-store")
 const { menubar } = require("menubar")
-const { ipcMain, Tray, nativeImage } = require("electron")
+const { ipcMain, Tray } = require("electron")
 const { to } = require("await-to-js")
 
 const { NODE_ENV } = process.env
@@ -42,7 +43,8 @@ ipcMain.handle("query-test", async (_, url, query) => {
 })
 
 function createMenubar() {
-  tray = new Tray(nativeImage.createEmpty())
+  const iconPath = path.join(__dirname, "../assets/pencil.png")
+  tray = new Tray(iconPath)
   const mb = menubar({
     browserWindow: {
       show: false,
