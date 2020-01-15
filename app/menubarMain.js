@@ -1,8 +1,7 @@
-const path = require("path")
 const Influx = require("influx")
 const Store = require("electron-store")
 const { menubar } = require("menubar")
-const { ipcMain, Tray } = require("electron")
+const { ipcMain, nativeImage, Tray } = require("electron")
 const { to } = require("await-to-js")
 
 const { NODE_ENV } = process.env
@@ -43,8 +42,9 @@ ipcMain.handle("query-test", async (_, url, query) => {
 })
 
 function createMenubar() {
-  const iconPath = path.join(__dirname, "../assets/pencil.png")
-  tray = new Tray(iconPath)
+  const pencilDataURL =
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAhFBMVEUAAADs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PHs8PFed9IBAAAAK3RSTlMAAQMEBQYLIScqLC0vMjU2ODk+QkN+f4KGi46SlZeanbe5wMHDyNni8/f9aI/hMAAAAH5JREFUGBmdwUkCgjAQBMCORkTcjUFxBaOi0///n3OKgSNVGGbzytHnSCnQZUqqAin3sCXJLxI7qYL15BV/W9k3DNbfDaK1uIbk0xpES3E11c0gWoirqS4G0VxcTXU2iGafd6A6ISHTrCVZIcV8nLU8ooNcjcIBXVQePROFgX5ezA2dwHGGSQAAAABJRU5ErkJggg=="
+  tray = new Tray(nativeImage.createFromDataURL(pencilDataURL))
   const mb = menubar({
     browserWindow: {
       show: false,
