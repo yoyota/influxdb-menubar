@@ -43,10 +43,9 @@ describe("Application launch", () => {
   describe("sucess case", () => {
     beforeEach(async () => {
       const query = `SELECT LAST("value") as menubar FROM "cpu_load_short"`
-      const { client } = app
-      await client.$("input#url").setValue(url)
-      await client.$("input#query").addValue(query)
-      await client.click("button[type=submit]")
+      await app.client.$("input#url").setValue(url)
+      await app.client.$("input#query").addValue(query)
+      await app.client.click("button[type=submit]")
     })
     test("form save button save config", async () => {
       const userDataPath = await app.electron.remote.app.getPath("userData")
@@ -64,5 +63,15 @@ describe("Application launch", () => {
       const expected = ["test tray title, tray title: 0.64"]
       expect(logs).toEqual(expect.arrayContaining(expected))
     })
+  })
+
+  test("check column alias", async () => {
+    const query = `SELECT LAST("value") FROM "cpu_load_short"`
+    await app.client.$("input#url").setValue(url)
+    await app.client.$("input#query").addValue(query)
+    await app.client.click("button[type=submit]")
+    expect(await app.client.$("p").getText()).toContain(
+      "Query was success but alias name is not menubar"
+    )
   })
 })
