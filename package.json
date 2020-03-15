@@ -20,7 +20,7 @@
   },
   "build": {
     "productName": "influxdb-menubar",
-    "appId": "yoyota.influxdb-menubar",
+    "appId": "org.yoyota.influxdb-menubar",
     "files": [
       "dist/",
       "node_modules/",
